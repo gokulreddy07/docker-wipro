@@ -1,0 +1,62 @@
+Assesment Answers Sheet
+Part A
+    1. With minimal possible layers to install Web Services and expose appropriate http port for accessing:
+
+        1. Created a nodejs app, opened a port and run it from our machine
+        2. Exposed a port 8080
+        3. When we build the image we use 
+        “docker build -t appnode:1.0 -f Dockerfile .”
+        When we run the image , we map the port with 8080 in our local machine.
+        “docker run -d -p 8090:8080 appnode:1.0”
+
+        gitURL: 
+
+    2. Docker Container is not Starting
+        
+          1. port is already in use
+          2. no required permissions to the repo
+          3. Docker daemon is not running
+          4. no space left in device
+          5. docker image not found with specific tag
+          6. conatiner with that name already exist
+
+PART B
+    1.Using shell command search for a particular pattern (of your choice) to search Docker logs using awk command
+        docker logs <containername> | grep <content> | awk '{print $1}' 
+
+    2. Execute a shell command inside a container to search for a file.
+        
+       syntax: “docker exec –it <container name> find / -name <filename>”
+       example: "docker exec -it appnode find / -name package.json"
+       
+
+JENKINS
+PART A
+    1. There is a Jenkins pipeline failure the failure error at the outset suggest that build has failed and one of the tool used for the build is running inside the container – what are the commands you will use for debugging the issue
+
+        1. docker stats <containerId> --> when we are using any metrics, and they show how the error occured
+        2. docker logs -f <containerId> --> basic command which shows all i/p o/p and errors of a container
+        3. docker exec -it <containerId> sh --> go inside a container and debug
+        4. docker commit <containerId> my-container && docker run -it my-container /bin/bash --> if we cant really start a container
+
+    2. There is a build failure due to connectivity issue with one of the tools – what actions you will take to narrow down the issue.
+        
+         1. check the authentication configuration to it (with credentials)
+         2. reset the credentials in mananger (secretkey or username and passoword)
+         3. check the api working status
+         4. if it is in ssh, configure the ssh-key connectiviy
+
+
+    3. Why Docker Push fails?
+
+         1. you may missed the docker login
+         2. check the docker hub url
+         3. check image is created with specified tagging or not
+         4. check docker login credentials 
+         5. check the image name, we shoudl add the docker hub id and repo to that
+         6. check docker daemon is running or not
+
+    4. Write a shell script to setup git repo, docker build, push image to docker repository.
+        Clone the shell script and give executable permissions to the file
+        The repository in github: 
+        Give chmod +x <filename> to execute a shellscript.
