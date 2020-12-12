@@ -9,7 +9,7 @@ Part A
         When we run the image , we map the port with 8080 in our local machine.
         “docker run -d -p 8090:8080 appnode:1.0”
 
-        gitURL: 
+        gitURL: git@github.com:gokulreddy07/docker-wipro.git
 
     2. Docker Container is not Starting
         
@@ -58,5 +58,5 @@ PART A
 
     4. Write a shell script to setup git repo, docker build, push image to docker repository.
         Clone the shell script and give executable permissions to the file
-        The repository in github: 
+        The repository in github: https://github.com/gokulreddy07/docker-wipro/blob/main/docker.sh
         Give chmod +x <filename> to execute a shellscript.
